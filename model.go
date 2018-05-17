@@ -31,7 +31,7 @@ func getGuests(room int) ([]string, error) {
 	}
 	defer rows.Close()
 
-	var guests []string
+	guests := []string{}
 	for rows.Next() {
 		var g string
 		if err := rows.Scan(&g); err != nil {
@@ -53,7 +53,7 @@ func getRooms() ([]Room, error) {
 		return nil, err
 	}
 
-	var nums []int
+	nums := []int{}
 	for rows.Next() {
 		var n int
 		if err := rows.Scan(&n); err != nil {
@@ -62,7 +62,7 @@ func getRooms() ([]Room, error) {
 		nums = append(nums, n)
 	}
 
-	var rooms []Room
+	rooms := []Room{}
 	for _, n := range nums {
 		g, err := getGuests(n)
 		if err != nil {
