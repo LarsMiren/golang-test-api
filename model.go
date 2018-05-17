@@ -6,6 +6,7 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
+// Room type with json names of fields
 type Room struct {
 	Number int      `json:"number"`
 	Guests []string `json:"guests"`
